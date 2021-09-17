@@ -8,14 +8,15 @@
     >
       <v-toolbar-title class="yellowCl" v-text="title" />
       <v-toolbar-title v-text="subtitle" />  
+      <!-- <div class="searchBarWrapper">
         <v-text-field
           id="searchbar"
           v-model="search"
-          label="Solo"
+          label="Search"
           prepend-icon="mdi-magnify"
-          placeholder="Placeholder"
           solo
         ></v-text-field>
+      </div> -->
       <v-spacer />
     </v-app-bar>
     <v-main>
@@ -40,11 +41,12 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <br/>
     <v-footer
       :absolute="!fixed"
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>&copy; Shopify Frontend Challenge {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
@@ -72,19 +74,40 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'SPACE',
-      subtitle: 'STAGRAM'
+      subtitle: 'STAGRAM',
+      search: ''
     }
   }
 }
 </script>
 
 <style>
+ html::-webkit-scrollbar {
+    width: 15px;
+}
+
+html::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgb(126, 126, 126); 
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+ 
 #appBg {
   background-color: #121620;
 }
 
 #navBg {
     background-color: #121620;
+    height: 75px !important;
+    padding-top: 10px;
 }
 
 .yellowCl {
@@ -98,8 +121,19 @@ export default {
 .mdi-magnify {
   fill: grey;
 }
+ 
+
+.searchBarWrapper {
+  margin-top: 1.5rem;
+  margin-left: 2rem;
+  width: 40%;
+}
 
 #searchbar {
-  padding-top: 20px;
+  border-radius: 25px;
+}
+
+.v-input__slot {
+  background-color: rgb(104, 104, 104);
 }
 </style>
