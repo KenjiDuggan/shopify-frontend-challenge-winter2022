@@ -34,28 +34,18 @@
     </v-row>
     <v-row justify="center">
       <v-layout row wrap>
-<<<<<<< HEAD
         <v-col v-for="image in loadedImages"
           :key="image.toString()"
           cols="12" sm="4" >
             <Card 
               :id="image.id"
-=======
-        <v-col v-for="image in images"
-          :key="image.toString()"
-          cols="12" sm="4" >
-            <Card 
->>>>>>> c35ecd05c23caac4f61797f76acde09d1bcad1c0
               :img-src="image.img_src"
               :camera-name="image.camera.name"
               :earth-date="image.earth_date"
               :landing-date="image.rover.landing_date"
               :launch-date="image.rover.launch_date"
               :full-name="image.camera.full_name"
-<<<<<<< HEAD
               :initial-state="image.liked"
-=======
->>>>>>> c35ecd05c23caac4f61797f76acde09d1bcad1c0
             />
         </v-col>
       </v-layout>
@@ -84,7 +74,6 @@ export default {
       rover_type: "none",
       page: 1 // default start at page 1
     }
-<<<<<<< HEAD
   },  
   beforeMount() {
     window.addEventListener('scroll', this.handleScroll);
@@ -123,9 +112,6 @@ export default {
       
     }
   },    
-=======
-  }
->>>>>>> c35ecd05c23caac4f61797f76acde09d1bcad1c0
 }
 </script>
 <style>

@@ -24,7 +24,6 @@ import dislikeIcon from '../static/images/thumb_down_black_24dp.svg'
 export default {
     name: 'Card',
     props: {
-<<<<<<< HEAD
         id: {
             type: Number,
             default: () => 0
@@ -33,8 +32,6 @@ export default {
             type: Boolean,
             default: () => false
         },
-=======
->>>>>>> c35ecd05c23caac4f61797f76acde09d1bcad1c0
         imgSrc: {
             type: String,
             default: () => ''
@@ -64,16 +61,11 @@ export default {
         return {
             likeIcon,
             dislikeIcon,
-<<<<<<< HEAD
             isLiked: this.initialState
-=======
-            isLiked: false
->>>>>>> c35ecd05c23caac4f61797f76acde09d1bcad1c0
         }
     },
     methods: {
         toggleLike() {
-<<<<<<< HEAD
             this.isLiked = !this.isLiked
 
             const image = {
@@ -92,12 +84,6 @@ export default {
               this.$store.commit('dislike', image) // then has to be removed
             }
         }
-=======
-            console.log("I have been toggled....")
-            const currState = this.isLiked
-            this.isLiked = !currState
-        },
->>>>>>> c35ecd05c23caac4f61797f76acde09d1bcad1c0
     }
 }
 </script>
@@ -196,11 +182,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-<<<<<<< HEAD
   z-index: 99;
-=======
-  z-index: 5;
->>>>>>> c35ecd05c23caac4f61797f76acde09d1bcad1c0
 }
 
 .card__read-more i {
