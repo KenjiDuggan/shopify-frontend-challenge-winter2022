@@ -110,15 +110,15 @@ export default {
     Card
   },
   async asyncData({ $axios }) { // we do our first 100 images from this fetch
-    const baseUrl = process.env.NASA_BASE_URL 
+    const nasaBaseUrl = process.env.NASA_BASE_URL 
     const apiKey = process.env.NASA_API_KEY
-    let images = await $axios.$get(baseUrl + '?page=1&sol=1000&api_key=' + apiKey)
+    let images = await $axios.$get(nasaBaseUrl + '?page=1&sol=1000&api_key=' + apiKey)
     images = images.photos
     return { images }
   },
   data() {
     return {
-      baseUrl: process.env.NASA_BASE_URL,
+      nasaBaseUrl: process.env.NASA_BASE_URL,
       apiKey: process.env.NASA_API_KEY,
       sol: 100,
       rover_type: "none",
@@ -134,21 +134,7 @@ export default {
   computed: {
     loadedImages() {
       const images = this.images
-      // console.log('this is thate store state ' + JSON.stringify(this.$store.state.liked))
-      // this.$store.state.liked.forEach((e) => {
-      //   if (images.filter(function(el) { return el.id === e.id; }).length > 0) {
-      //     const idx = 
-      //     images[idx].liked = true  
-      //   }
-      // })
-
-      // images.forEach((e) => {
-      //   // eslint-disable-next-line no-prototype-builtins
-      //   if(!e.hasOwnProperty('liked')) {
-      //     e.liked = false
-      //   }
-      // })
-      // console.log(images)
+ 
       return images
     },
     storedLikes() {
@@ -163,9 +149,9 @@ export default {
       this.page = this.page + 1
       let urlString = ''
       if(this.selectedCamera !== 'All') {
-        urlString = this.baseUrl + '?page=' + this.page + '&sol=1000&api_key=' + this.apiKey + '&camera=' + this.selectedCamera
+        urlString = this.nasaBaseUrl + '?page=' + this.page + '&sol=1000&api_key=' + this.apiKey + '&camera=' + this.selectedCamera
       } else {
-        urlString = this.baseUrl + '?page=' + this.page + '&sol=1000&api_key=' + this.apiKey 
+        urlString = this.nasaBaseUrl + '?page=' + this.page + '&sol=1000&api_key=' + this.apiKey 
       }
        
       const responseData = await this.$axios.get(urlString)
@@ -175,9 +161,9 @@ export default {
       this.page = 1
       let urlString = ''
       if(this.selectedCamera !== 'All') {
-        urlString = this.baseUrl + '?page=' + this.page + '&sol=1000&api_key=' + this.apiKey + '&camera=' + this.selectedCamera
+        urlString = this.nasaBaseUrl + '?page=' + this.page + '&sol=1000&api_key=' + this.apiKey + '&camera=' + this.selectedCamera
       } else {
-        urlString = this.baseUrl + '?page=' + this.page + '&sol=1000&api_key=' + this.apiKey 
+        urlString = this.nasaBaseUrl + '?page=' + this.page + '&sol=1000&api_key=' + this.apiKey 
       }
        
       const responseData = await this.$axios.get(urlString)
