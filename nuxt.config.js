@@ -4,7 +4,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - shopify-frontend-challenge-winter2022',
-    title: 'shopify-frontend-challenge-winter2022',
+    title: 'Spacestagram',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -46,7 +46,10 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // https://www.npmjs.com/package/nuxt-clipboard2
+    'nuxt-clipboard2'
   ],
+ 
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},

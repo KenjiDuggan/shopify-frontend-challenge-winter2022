@@ -8,11 +8,10 @@
                 <div class="card__post-date">Landing: {{ landingDate }}</div>
                 <div class="card__post-date">Launch: {{ launchDate }}</div>
                 <p class="card__excerpt">Full Name: {{ fullName }}</p>
-                <button v-if="!isLiked" class="card__read-more" @click.native="toggleLike()">
-                    <img :src="likeIcon" class="likeIcon" />
-                </button>
-                <button v-else class="card__read-more" @click.native="toggleLike()">
-                    <img :src="dislikeIcon" class="likeIcon" />
+                <p class="card__excerpt">ID: {{ id }}</p>
+                <button class="card__read-more" @click="toggleLike()">
+                    <img v-if="!isLiked" :src="likeIcon" class="likeIcon" />
+                    <img v-else :src="dislikeIcon" class="likeIcon" />
                 </button>
             </div>  
         </div>
@@ -26,6 +25,14 @@ import dislikeIcon from '../static/images/thumb_down_black_24dp.svg'
 export default {
     name: 'Card',
     props: {
+        id: {
+            type: Number,
+            default: () => 0
+        },
+        initialState: {
+            type: Boolean,
+            default: () => false
+        },
         imgSrc: {
             type: String,
             default: () => ''
@@ -55,15 +62,29 @@ export default {
         return {
             likeIcon,
             dislikeIcon,
-            isLiked: false
+            isLiked: this.initialState
         }
     },
     methods: {
         toggleLike() {
-            console.log("I have been toggled....")
-            const currState = this.isLiked
-            this.isLiked = !currState
-        },
+            this.isLiked = !this.isLiked
+
+            const image = {
+                id: this.id,
+                imgSrc: this.imgSrc,
+                cameraName: this.cameraName,
+                earthDate: this.earthDate,
+                landingDate: this.landingDate,
+                launchDate: this.launchDate,
+                fullName: this.fullName
+            }
+
+            if(this.isLiked) {
+              this.$store.commit('like', image) // then has to be added
+            } else {
+              this.$store.commit('dislike', image) // then has to be removed
+            }
+        }
     }
 }
 </script>
@@ -162,7 +183,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  z-index: 5;
+  z-index: 99;
 }
 
 .card__read-more i {
