@@ -19,7 +19,9 @@ export default {
   target: 'static',
  
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    NASA_BASE_URL: "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos",
+    NASA_API_KEY: "UJRYxzCtuIEhbcaGKGYCCFylEeGr7ITTKCBz8AfE"
   },
 
   generate: {
